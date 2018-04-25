@@ -1,4 +1,6 @@
 <style lang="less">
+@import url("../node_modules/weui-wxss/dist/app.wxss");
+
 .container {
   height: 100%;
   display: flex;
@@ -15,11 +17,17 @@ import 'wepy-async-function'
 
 import { setStore } from 'wepy-redux'
 import configStore from './store'
+import Promise from 'promise-polyfill';
 
 const store = configStore()
 setStore(store)
 
 export default class extends wepy.app {
+    constructor () {
+        super();
+        this.use('promisify');
+    }
+
   config = {
     pages: [
       'pages/index'
